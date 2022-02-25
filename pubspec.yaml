@@ -37,12 +37,13 @@ dependencies:
   get: ^4.6.1
   http: ^0.13.4
   get_storage: ^2.0.3
-  video_trimmer: ^0.6.0
+  video_trimmer: ^1.0.0
   file_picker: ^4.4.0
   video_player: ^2.2.18
   export_video_frame: ^0.0.7
   video_thumbnail: ^0.4.3
   path_provider: ^2.0.9
+  flutter_simple_sticker_view: ^1.0.0
 
 dev_dependencies:
   flutter_test:

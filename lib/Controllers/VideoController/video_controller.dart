@@ -13,7 +13,9 @@ class VideoController extends GetxController {
   RxBool shredLoading = false.obs;
   List<File> images = [];
   late VideoPlayerController videoPlayerController;
-
+  late VideoPlayerController videoPlayerController1;
+  late VideoPlayerController videoPlayerController2;
+  late VideoPlayerController videoPlayerController3;
   Future getFirstFrames() async {
     // for (int i = 0; i < shrededVideos.length; i++) {
     //   var tmp = await ExportVideoFrame.exportImage(shrededVideos[i].path, 1, 0);
@@ -38,21 +40,23 @@ class VideoController extends GetxController {
     _trimmer.loadVideo(videoFile: fullVideoFile).then((value) async {
       Duration videoDuration = _trimmer.videoPlayerController!.value.duration;
       miniVideoCount = videoDuration.inSeconds;
-      for (double i = 0; i < miniVideoCount; i++) {
-        if (i == 0) {
-          var tmp = await _trimmer.saveTrimmedVideo(
-              startValue: 0, endValue: i * 1000 + 1000);
-          shrededVideos.add(File(tmp));
-          if (shrededVideos.length == miniVideoCount) {
-            getFirstFrames();
-          }
-        } else {
-          var tmp = await _trimmer.saveTrimmedVideo(
-              startValue: i * 1000, endValue: i * 1000 + 1000);
-          shrededVideos.add(File(tmp));
-          if (shrededVideos.length == miniVideoCount) {
-            getFirstFrames();
-          }
+      for (int i = 0; i < miniVideoCount; i++) {
+        print('start value: ${i * 1000} endValue: ${i * 1000 + 1000}');
+        try {
+          _trimmer.saveTrimmedVideo(
+              startValue: i * 1000,
+              endValue: i * 1000 + 1000,
+              videoFileName: DateTime.now().toString(),
+              onSave: (value) {
+                if (value != null) {
+                  shrededVideos.add(File(value));
+                  if (shrededVideos.length == miniVideoCount) {
+                    getFirstFrames();
+                  }
+                }
+              });
+        } catch (e) {
+          print(e);
         }
       }
     });

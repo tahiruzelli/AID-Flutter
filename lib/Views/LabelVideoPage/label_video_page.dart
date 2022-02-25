@@ -42,6 +42,7 @@ class _LabelVideoPage extends State<LabelVideoPage> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
+                              videoController.videoPlayerController.dispose();
                               videoController.videoPlayerController =
                                   VideoPlayerController.file(
                                       videoController.shrededVideos[index])
