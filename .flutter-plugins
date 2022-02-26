@@ -1,10 +1,7 @@
 # This is a generated file; do not edit or check into version control.
-export_video_frame=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/export_video_frame-0.0.7/
 ffmpeg_kit_flutter=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/ffmpeg_kit_flutter-4.5.0-LTS/
 file_picker=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/file_picker-4.4.0/
 flutter_plugin_android_lifecycle=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/
-flutter_simple_sticker_view=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_simple_sticker_view-1.0.0/
-media_info=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/media_info-0.7.0/
 path_provider=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.9/
 path_provider_android=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.11/
 path_provider_ios=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.7/

@@ -1,10 +1,11 @@
-import 'package:AID/Globals/Contants/sizes.dart';
+import 'package:AID/Globals/Contants/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../Globals/Contants/colors.dart';
-
-AppBar myAppBar() {
+AppBar myAppBar({Widget? action}) {
   return AppBar(
     backgroundColor: colorPurple,
+    actions: [
+      action ?? Container(),
+    ],
   );
 }

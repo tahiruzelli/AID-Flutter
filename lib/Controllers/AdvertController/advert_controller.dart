@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:AID/Controllers/VideoController/video_controller.dart';
-import 'package:AID/Views/LabelVideoPage/label_video_page.dart';
+import 'package:AID/Views/LabelFramePage/label_frame_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
-import '../../Views/AdvertPage/adverts.dart';
 
 class AdvertController extends GetxController {
   void onCardPressed() async {

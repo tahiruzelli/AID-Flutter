@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,11 +39,9 @@ dependencies:
   get_storage: ^2.0.3
   video_trimmer: ^1.0.0
   file_picker: ^4.4.0
-  video_player: ^2.2.18
-  export_video_frame: ^0.0.7
   video_thumbnail: ^0.4.3
-  path_provider: ^2.0.9
-  flutter_simple_sticker_view: ^1.0.0
+  google_fonts: ^2.3.1
+  stick_it: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:
@@ -68,9 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
