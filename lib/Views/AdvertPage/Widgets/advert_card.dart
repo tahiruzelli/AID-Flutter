@@ -12,7 +12,7 @@ class AdvertCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(paddingM),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           advertController.onCardPressed();
         },
         child: Container(
@@ -42,12 +42,28 @@ class AdvertCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('12:04'),
-                  Text('0.7 \$'),
-                ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      '0.7 \$',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      '12:04',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),

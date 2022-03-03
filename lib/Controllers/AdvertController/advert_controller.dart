@@ -14,7 +14,6 @@ class AdvertController extends GetxController {
       File file = File(result.files.single.path!);
       Get.to(LabelVideoPage());
       VideoController videoController = Get.put(VideoController());
-
       videoController.fullVideoFile = file;
       videoController.shredVideo();
     }
