@@ -13,3 +13,8 @@ const List<Color> colorPallet = [
   Colors.indigoAccent,
   Colors.lime,
 ];
+const Color colorInfo = Color(0xff4ba0b5);
+const Color colorWarning = Color(0xfff6c444);
+const Color colorDanger = Color(0xffcb444a);
+const Color colorSuccess = Color(0xff53a551);
+const Color colorWhite = Colors.white;

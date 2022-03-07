@@ -43,6 +43,8 @@ dependencies:
   google_fonts: ^2.3.1
   stick_it: ^1.0.0+2
   video_player: ^2.2.19
+  animated_flip_counter: ^0.2.4
+  flutter_credit_card: ^3.0.1
 
 dev_dependencies:
   flutter_test:
