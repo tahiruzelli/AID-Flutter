@@ -18,3 +18,7 @@ const Color colorWarning = Color(0xfff6c444);
 const Color colorDanger = Color(0xffcb444a);
 const Color colorSuccess = Color(0xff53a551);
 const Color colorWhite = Colors.white;
+const Color colorDarkStatePurple = Color(0xff483d8b);
+const Color colorStatePurple = Color(0xff6A5ACD);
+const Color colorMediumStatePurple = Color(0xff7B68EE);
+const Color colorIndigoPurple = Color(0xff4B0082);

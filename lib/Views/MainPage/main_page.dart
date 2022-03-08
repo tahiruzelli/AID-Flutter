@@ -8,7 +8,7 @@ import 'package:get/instance_manager.dart';
 import 'Widgets/my_center_button.dart';
 
 class MainPage extends StatelessWidget {
-  MainController mainController = Get.put(MainController());
+  MainController mainController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Obx(

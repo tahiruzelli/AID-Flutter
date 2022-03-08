@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:AID/Controllers/BalanceController/balance_controller.dart';
 import 'package:AID/Views/MyBalancePage/my_balance_page.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ProfileController extends GetxController {
   double myMoney = 20.0;
