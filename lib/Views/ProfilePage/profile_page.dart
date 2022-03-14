@@ -49,7 +49,9 @@ class ProfilePage extends StatelessWidget {
 
   Widget get exitButton {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        profileController.onExitButtonPressed();
+      },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.red),
       ),

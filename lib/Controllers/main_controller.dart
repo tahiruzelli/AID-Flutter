@@ -1,3 +1,4 @@
+import 'package:AID/Globals/Contants/keys.dart';
 import 'package:AID/Views/LoginPage/login_page.dart';
 import 'package:AID/Views/MainPage/main_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MainController extends GetxController {
     ProfilePage(),
   ];
   Widget firstRoute() {
-    if (GetStorage().read('UserData') == null) {
+    if (GetStorage().read(userDataKey) == null) {
       return LoginPage();
     } else {
       return MainPage();
