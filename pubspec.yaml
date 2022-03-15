@@ -45,6 +45,8 @@ dependencies:
   video_player: ^2.2.19
   animated_flip_counter: ^0.2.4
   flutter_credit_card: ^3.0.1
+  firebase_database: ^9.0.8
+  firebase_core: ^1.13.1
 
 dev_dependencies:
   flutter_test:
