@@ -48,6 +48,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: registerController.emailController,
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(
               color: Colors.white,
@@ -83,6 +84,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: registerController.nameController,
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(
               color: Colors.white,
@@ -118,6 +120,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: registerController.passwordController,
             obscureText: true,
             style: const TextStyle(
               color: Colors.white,
@@ -145,14 +148,14 @@ class _RegisterPageScreenState extends State<RegisterPage> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => registerController.onRegisterButtonPressed(),
-        padding: EdgeInsets.all(15.0),
+        onPressed: () => registerController.onSelectAvatarButtonPressed(),
+        padding: const EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
         color: Colors.white,
         child: const Text(
-          'Register',
+          'Select Avatar',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -195,6 +198,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    registerController.clearVars();
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,

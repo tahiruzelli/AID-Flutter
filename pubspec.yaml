@@ -47,6 +47,7 @@ dependencies:
   flutter_credit_card: ^3.0.1
   firebase_database: ^9.0.8
   firebase_core: ^1.13.1
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:

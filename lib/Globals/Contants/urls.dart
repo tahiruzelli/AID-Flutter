@@ -1,0 +1,11 @@
+const String baseUrl = 'https://aid-web.herokuapp.com/api/v1/';
+const String getAnnouncementsUrl = 'Announcement/GetAllAnnouncements';
+const String getAvatarsUrl = 'Avatar/GelAllAvatars';
+const String postPhotoUrl = 'DataSet';
+const String getTagsUrl = 'Tag/GetAllTags';
+const String getUserUrl = 'User/GetUser/';
+const String loginUrl = 'User/Login';
+const String registerUrl = 'User/Register';
+const String getVideosUrl = 'Video/GetAllVideos';
+const String getMyWithdrawRequestsUrl = 'WithdrawRequests/GetMyRequests/';
+const String createWithdrawRequestUrl = 'WithdrawRequests/CreateRequest';
