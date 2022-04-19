@@ -1,3 +1,4 @@
+import 'package:AID/Models/announcement.dart';
 import 'package:AID/Views/HomePage/announcement_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,15 +6,15 @@ import 'package:get/get.dart';
 import '../../../Globals/Contants/colors.dart';
 
 class AnnouncementCard extends StatelessWidget {
-  Map json;
-  AnnouncementCard(this.json);
+  Announcement announcement;
+  AnnouncementCard(this.announcement);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
-        onTap: (){
-          Get.to(AnnouncementDetail(json));
+        onTap: () {
+          Get.to(AnnouncementDetail(announcement));
         },
         child: Container(
           width: Get.width / 2 - 10,
@@ -35,7 +36,7 @@ class AnnouncementCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Image.network(
-                  json['image'],
+                  announcement.photoUrl!,
                   fit: BoxFit.fitWidth,
                   height: Get.height / 10,
                   width: Get.width / 3,
@@ -44,7 +45,7 @@ class AnnouncementCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  json['title'],
+                  announcement.title ?? "",
                   style: const TextStyle(
                     color: Colors.white,
                   ),

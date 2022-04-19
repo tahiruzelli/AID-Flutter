@@ -1,11 +1,12 @@
 import 'package:AID/Globals/Contants/colors.dart';
+import 'package:AID/Models/announcement.dart';
 import 'package:AID/Views/MainPage/Widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AnnouncementDetail extends StatelessWidget {
-  late Map json;
-  AnnouncementDetail(this.json);
+  late Announcement announcement;
+  AnnouncementDetail(this.announcement);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +16,7 @@ class AnnouncementDetail extends StatelessWidget {
         children: [
           const SizedBox(height: 10),
           Image.network(
-            json['image'],
+            announcement.photoUrl!,
             height: Get.height / 5,
             width: Get.width,
             fit: BoxFit.fitWidth,
@@ -23,7 +24,7 @@ class AnnouncementDetail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
             child: Text(
-              json['title'],
+              announcement.title ?? "",
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -33,7 +34,7 @@ class AnnouncementDetail extends StatelessWidget {
             ),
           ),
           Text(
-            json['description'],
+            announcement.description ?? "",
             style: const TextStyle(
               color: Colors.white,
               fontSize: 15,

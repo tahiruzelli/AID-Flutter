@@ -1,17 +1,36 @@
-import 'package:AID/fakedata.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:AID/Repositories/AnnoucementRepository/annoucement_repository.dart';
+import 'package:get/state_manager.dart';
+import '../../Models/announcement.dart';
 
 class HomePageController extends GetxController {
-  List? allList;
-  List leftSideList = [];
-  List rightSideList = [];
+  AnnouncementRepository announcementRepository = AnnouncementRepository();
+
+  List<Announcement> leftSideList = [];
+  List<Announcement> rightSideList = [];
+  List<Announcement> announcements = [];
+
+  RxBool announcementsLoading = false.obs;
+
   void getLeftAndRightSideLists() {
-    fakedataList.forEach((element) {
-      if (element['id'] % 2 == 0) {
-        leftSideList.add(element);
-      } else {
+    announcements.forEach((element) {
+      if (element.id! % 2 == 0) {
         rightSideList.add(element);
+      } else {
+        leftSideList.add(element);
       }
+    });
+  }
+
+  Future getAnnouncements() async {
+    announcementsLoading.value = true;
+    announcementRepository.getAnnouncements().then((value) {
+      if (value['success']) {
+        announcements = (value['data'] as List)
+            .map((e) => Announcement.fromJson(e))
+            .toList();
+        getLeftAndRightSideLists();
+      }
+      announcementsLoading.value = false;
     });
   }
 
@@ -19,7 +38,6 @@ class HomePageController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    allList = fakedataList;
     getLeftAndRightSideLists();
   }
 }
