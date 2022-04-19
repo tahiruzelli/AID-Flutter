@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginPage> {
-  LoginController loginController=  Get.put(LoginController());
+  LoginController loginController = Get.put(LoginController());
   final kHintTextStyle = const TextStyle(
     color: Colors.white54,
     fontFamily: 'OpenSans',
@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.emailController,
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(
               color: Colors.white,
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginPage> {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: const EdgeInsets.only(top: 14.0),
               prefixIcon: const Icon(
                 Icons.email,
                 color: Colors.white,
@@ -84,6 +85,7 @@ class _LoginScreenState extends State<LoginPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.passwordController,
             obscureText: true,
             style: const TextStyle(
               color: Colors.white,

@@ -1,30 +1,41 @@
 import 'package:AID/Controllers/ProfileController/profile_controller.dart';
 import 'package:AID/Globals/Contants/colors.dart';
+import 'package:AID/Globals/Contants/keys.dart';
+import 'package:AID/Globals/Utils/get_avatar_url_from_id.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../Models/user_model.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
+    profileController.currentUser =
+        User.fromJson(GetStorage().read(userDataKey));
     return Scaffold(
       backgroundColor: colorScaffoldColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Align(
+          Align(
             alignment: Alignment.center,
             child: CircleAvatar(
               radius: 75,
               backgroundColor: Colors.transparent,
-              backgroundImage: NetworkImage(
-                  'https://secure.gravatar.com/avatar/d6fd6bff19d7f0ad4024f3811474fe92?s=180&d=mm&r=g'),
+              child: Center(
+                child: SvgPicture.network(
+                  getAvatarUrlFromId(profileController.currentUser!.avatarId!),
+                ),
+              ),
             ),
           ),
-          const Text(
-            'Tahir Uzelli',
-            style: TextStyle(
+          Text(
+            profileController.currentUser!.name ?? "",
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 30,
@@ -34,12 +45,12 @@ class ProfilePage extends StatelessWidget {
           const Divider(color: Colors.white),
           GestureDetector(
             onTap: (() => profileController.onMyMoneyButtonPressed()),
-            child: profileDataRow('Mevcut Bakiye', '24 ₺'),
+            child: profileDataRow('Mevcut Bakiye', '${profileController.currentUser!.balance ?? ""} ₺'),
           ),
           const Divider(color: Colors.white),
-          profileDataRow('Toplam kazanç', '64 ₺'),
+          profileDataRow('Toplam kazanç', '${profileController.currentUser!.totalGain ?? ""} ₺'),
           const Divider(color: Colors.white),
-          profileDataRow('Etiketlenen video uzunluğu', '2s'),
+          profileDataRow('Etiketlenen video uzunluğu', "${profileController.currentUser!.totalVideoEditetTime ?? ""}s"),
           const Divider(color: Colors.white),
           exitButton
         ],
