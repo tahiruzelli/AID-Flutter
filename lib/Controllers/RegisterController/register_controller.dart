@@ -1,9 +1,9 @@
+import 'package:AID/Globals/Utils/generate_md5.dart';
 import 'package:AID/Globals/Widgets/custom_snackbar.dart';
 import 'package:AID/Models/avatar_model.dart';
 import 'package:AID/Repositories/RegisterRepository/register_repository.dart';
 import 'package:AID/Views/AvatarSelectPage/avatar_select_view.dart';
 import 'package:AID/Views/LoginPage/login_page.dart';
-import 'package:AID/Views/MainPage/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,23 +47,38 @@ class RegisterController extends GetxController {
   }
 
   void onSelectAvatarButtonPressed() {
-    getAvatars();
-    Get.to(AvatarSelectView());
+    if (nameController.text.split(' ').length < 2 ||
+        nameController.text.length < 6) {
+      warningSnackBar("İsim formatı hatalı!");
+    } else if (!GetUtils.isEmail(emailController.text)) {
+      warningSnackBar("E-mail formatı hatalı!");
+    } else if (passwordController.text.length < 8) {
+      warningSnackBar("Şifreniz 8 karakterden az olamaz!");
+    } else {
+      if (avatars.isEmpty) {
+        getAvatars();
+      }
+      Get.to(AvatarSelectView());
+    }
   }
 
   void onRegisterButtonPressed() {
-    if (checkValuesAreCorrect()) {
-      registerLoading.value = true;
-      registerRepository
-          .register(
-            name: nameController.text,
-            email: emailController.text,
-            password: passwordController.text,
-            avatarId: selectedAvatar!.id.toString(),
-          )
-          .then((value) {});
-      Get.offAll(MainPage());
-    }
+    registerLoading.value = true;
+    registerRepository
+        .register(
+      name: nameController.text,
+      email: emailController.text,
+      password: generateMd5(passwordController.text),
+      avatarId: selectedAvatar!.id.toString(),
+    )
+        .then((value) {
+      if (value['success']) {
+        Get.offAll(LoginPage());
+        successSnackBar("Başarı ile kayıt oldunuz");
+      } else {
+        errorSnackBar(value['error']);
+      }
+    });
   }
 
   void onSignInButtonPressed() {

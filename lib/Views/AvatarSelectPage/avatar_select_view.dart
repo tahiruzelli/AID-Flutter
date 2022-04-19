@@ -12,6 +12,7 @@ class AvatarSelectView extends StatelessWidget {
   RegisterController registerController = Get.find();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: myAppBar(),
       floatingActionButton: FloatingActionButton.extended(

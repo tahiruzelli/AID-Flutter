@@ -42,5 +42,6 @@ class RegisterRepository implements IRegisterRepository {
       data: jsonBody,
       requestType: "POST",
     ).getData();
+    return response;
   }
 }
