@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "307465022120",
+    "firebase_url": "https://ai-development-a93cb-default-rtdb.firebaseio.com",
+    "project_id": "ai-development-a93cb",
+    "storage_bucket": "ai-development-a93cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307465022120:android:7dad5c63af2d8b795cb09d",
+        "android_client_info": {
+          "package_name": "com.example.aid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307465022120-dkhtrsbjhed766soh6pcqssb3domvqnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-NfOWMaO9JxY5gKQxD06D9k6ppw0T-q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307465022120-dkhtrsbjhed766soh6pcqssb3domvqnk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "307465022120-46pcm412pgtbhkl8o4pb7e568daehu8a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prokaryotech.aid.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

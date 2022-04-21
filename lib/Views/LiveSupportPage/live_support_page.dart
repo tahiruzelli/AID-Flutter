@@ -90,8 +90,9 @@ class _MessagePageState extends State<MessageDetailPage> {
     messagesRef = FirebaseDatabase.instance.ref();
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
+        centerTitle: true,
         backgroundColor: colorPurple,
+        title: Text("Live Support"),
         actions: [
           IconButton(
             onPressed: () {},

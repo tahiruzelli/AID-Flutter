@@ -2,18 +2,22 @@ import 'package:AID/Controllers/AdvertController/advert_controller.dart';
 import 'package:AID/Globals/Contants/colors.dart';
 import 'package:AID/Globals/Contants/paddings.dart';
 import 'package:AID/Globals/Contants/sizes.dart';
+import 'package:AID/Globals/Utils/second_to_time.dart';
+import 'package:AID/Models/advert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AdvertCard extends StatelessWidget {
   AdvertController advertController = Get.find();
+  late Advert advert;
+  AdvertCard(this.advert);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(paddingM),
       child: GestureDetector(
         onTap: () {
-          advertController.onCardPressed();
+          advertController.onCardPressed(advert);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -36,7 +40,7 @@ class AdvertCard extends StatelessWidget {
                   topRight: Radius.circular(10),
                 ),
                 child: Image.network(
-                  'https://istanbulfotograf.com/wp-content/uploads/2019/08/online-live-video-marketing-concept_12892-37.jpg',
+                  advert.coverImageUrl!,
                   height: advertCardHeight,
                   width: advertCardWidth,
                   fit: BoxFit.cover,
@@ -47,17 +51,17 @@ class AdvertCard extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
-                      '0.7 \$',
-                      style: TextStyle(
+                      '${advert.totalGain} \$',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),
                     ),
                     Text(
-                      '12:04',
-                      style: TextStyle(
+                      secondToTime(advert.videoLength ?? 0),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),

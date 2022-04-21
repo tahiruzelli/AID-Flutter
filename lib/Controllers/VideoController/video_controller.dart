@@ -30,6 +30,7 @@ class VideoController extends GetxController {
   void shredVideo() {
     shredLoading.value = true;
     shrededVideos.clear();
+    print(fullVideoFile);
     _trimmer.loadVideo(videoFile: fullVideoFile).then((value) async {
       Duration videoDuration = _trimmer.videoPlayerController!.value.duration;
       miniVideoCount = videoDuration.inSeconds;
@@ -64,6 +65,7 @@ class VideoController extends GetxController {
       shredLoading.value = false;
     }
   }
+
 
   @override
   void onInit() {
