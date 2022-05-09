@@ -1,4 +1,3 @@
-import '../../Globals/Contants/urls.dart';
 import '../../Services/rest_connector.dart';
 
 abstract class IAnnouncementRepository {

@@ -2,9 +2,11 @@
 ffmpeg_kit_flutter=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/ffmpeg_kit_flutter-4.5.0-LTS/
 file_picker=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/file_picker-4.4.0/
 firebase_core=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.13.1/
-firebase_core_web=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.1/
+firebase_core_web=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.3/
 firebase_database=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-9.0.8/
 firebase_database_web=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database_web-0.2.0+7/
+firebase_storage=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.15/
+firebase_storage_web=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.14/
 flutter_plugin_android_lifecycle=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/
 path_provider=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.9/
 path_provider_android=/Users/tahiruzelli/Documents/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.11/

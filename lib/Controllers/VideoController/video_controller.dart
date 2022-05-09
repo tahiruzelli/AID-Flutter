@@ -1,17 +1,20 @@
 import 'dart:io';
-import 'package:AID/Globals/Contants/urls.dart';
 import 'package:AID/Globals/Widgets/custom_snackbar.dart';
 import 'package:AID/Models/tag.dart';
+import 'package:AID/Models/user_model.dart';
 import 'package:AID/Repositories/VideoRepository/video_repository.dart';
 import 'package:AID/Views/LabelFramePage/tag_frame_page.dart';
-import 'package:AID/Views/MainPage/main_page.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:stick_it/stick_it.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:video_trimmer/video_trimmer.dart';
+
+import '../../Globals/Contants/keys.dart';
+import '../../Views/StaticPages/success_page.dart';
 
 class VideoController extends GetxController {
   VideoRepository videoRepository = VideoRepository();
@@ -72,19 +75,35 @@ class VideoController extends GetxController {
     Get.to(TagFramePage(file));
   }
 
-  Future postImageFirebase() async {}
-
   Future postDataSet(File file, int tagId) async {
-    // TODO : BURADA BACKENDE RESMI POST ETCEZ.
+    User currentUser = User.fromJson(GetStorage().read(userDataKey));
     if (inVideoIndex.value != images.length - 1) {
       shredLoading.value = true;
       await Future.delayed(const Duration(milliseconds: 250));
+      uploadImage(file, tagId, currentUser.id ?? 0);
       inVideoIndex.value++;
       shredLoading.value = false;
       Get.back();
     } else {
       Get.offAll(SuccessPage());
     }
+  }
+
+  Future uploadImage(File imageFile, int tagId, int userId) async {
+    var uuid = const Uuid().v1();
+    Reference ref = FirebaseStorage.instance.ref().child("post_$uuid.jpg");
+    UploadTask uploadTask = ref.putFile(imageFile);
+    (await uploadTask).ref.getDownloadURL().then((value) {
+      createDataSet(value, tagId, userId);
+    });
+  }
+
+  Future createDataSet(
+    String photoUrl,
+    int tagId,
+    int userId,
+  ) async {
+    videoRepository.createDataSet(photoUrl, tagId, userId);
   }
 
   Future getTags() async {

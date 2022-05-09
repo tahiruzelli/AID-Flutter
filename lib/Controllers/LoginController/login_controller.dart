@@ -6,8 +6,6 @@ import 'package:AID/Views/MainPage/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../../Models/user_model.dart';
 import '../../Views/RegisterPage/register_page.dart';
 
 class LoginController extends GetxController {
