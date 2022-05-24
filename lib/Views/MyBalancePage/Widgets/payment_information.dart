@@ -121,7 +121,7 @@ class PaymentInformation extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    print('valid!');
+                    balanceController.onCreateButtonRequestButtonPressed();
                   } else {
                     print('invalid!');
                   }
