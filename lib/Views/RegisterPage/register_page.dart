@@ -75,7 +75,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Full Name',
+          'Tam İsim',
           style: kLabelStyle,
         ),
         const SizedBox(height: 10.0),
@@ -111,7 +111,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          'Şifre',
           style: kLabelStyle,
         ),
         const SizedBox(height: 10.0),
@@ -155,7 +155,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
         ),
         color: Colors.white,
         child: const Text(
-          'Select Avatar',
+          'Avatar Seç',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -175,7 +175,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
         text: const TextSpan(
           children: [
             TextSpan(
-              text: 'Do you have an Account? ',
+              text: 'Hesabın var mı? ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -183,7 +183,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
               ),
             ),
             TextSpan(
-              text: 'Sign In',
+              text: 'Giriş Yap',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -235,7 +235,7 @@ class _RegisterPageScreenState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text(
-                        'Sign UP',
+                        'Kayıt Ol',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',

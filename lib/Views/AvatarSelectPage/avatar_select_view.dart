@@ -17,7 +17,7 @@ class AvatarSelectView extends StatelessWidget {
       appBar: myAppBar(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => registerController.onRegisterButtonPressed(),
-        label: const Text('Register'),
+        label: const Text('Kayıt Ol'),
         backgroundColor: colorScaffoldColor,
       ),
       floatingActionButtonLocation:

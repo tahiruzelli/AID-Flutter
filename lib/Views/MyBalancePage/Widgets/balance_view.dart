@@ -22,7 +22,7 @@ class BalanceView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: leftPadding),
               child: const Text(
-                "Total Money: ",
+                "Toplam Para: ",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -49,7 +49,7 @@ class BalanceView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: leftPadding),
                 child: const Text(
-                  'With Draw: ',
+                  'Çekmek İstenilen: ',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
@@ -106,7 +106,7 @@ class BalanceView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: leftPadding),
                 child: const Text(
-                  "Remaining Money: ",
+                  "Kalan Para: ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,

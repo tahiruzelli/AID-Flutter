@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all(Colors.red),
       ),
       child: const Text(
-        'Exit',
+        'Çıkış',
         style: TextStyle(
           fontSize: 20,
         ),

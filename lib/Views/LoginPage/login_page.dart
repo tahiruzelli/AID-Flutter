@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          'Şifre',
           style: kLabelStyle,
         ),
         const SizedBox(height: 10.0),
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginPage> {
         onPressed: () => print('Forgot Password Button Pressed'),
         padding: const EdgeInsets.only(right: 0.0),
         child: Text(
-          'Forgot Password?',
+          'Şifremi Unuttum',
           style: kLabelStyle,
         ),
       ),
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginPage> {
             ),
           ),
           Text(
-            'Remember me',
+            'Beni Hatırla',
             style: kLabelStyle,
           ),
         ],
@@ -161,7 +161,7 @@ class _LoginScreenState extends State<LoginPage> {
         ),
         color: Colors.white,
         child: const Text(
-          'LOGIN',
+          'Giriş',
           style: TextStyle(
             color: Color(0xFF527DAA),
             letterSpacing: 1.5,
@@ -181,7 +181,7 @@ class _LoginScreenState extends State<LoginPage> {
         text: const TextSpan(
           children: [
             TextSpan(
-              text: 'Don\'t have an Account? ',
+              text: 'Hesabın mı yok?',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: 'Kayıt Ol',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -240,7 +240,7 @@ class _LoginScreenState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text(
-                        'Sign In',
+                        'Giriş Yap',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',

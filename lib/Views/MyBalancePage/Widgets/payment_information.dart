@@ -110,7 +110,7 @@ class PaymentInformation extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.all(12),
                   child: const Text(
-                    'Validate',
+                    'Onayla',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'halter',

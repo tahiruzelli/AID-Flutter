@@ -92,7 +92,7 @@ class _MessagePageState extends State<MessageDetailPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: colorPurple,
-        title: Text("Live Support"),
+        title: const Text("Canlı Destek"),
         actions: [
           IconButton(
             onPressed: () {},

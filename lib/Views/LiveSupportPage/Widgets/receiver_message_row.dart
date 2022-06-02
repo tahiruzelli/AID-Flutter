@@ -7,18 +7,18 @@ class ReceiverMessageRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
-      leading: Container(
-        height: 50,
-        width: 50,
-        decoration:
-            const BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
-        child: const Center(
-          child: Text(
-            "T",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-      ),
+      // leading: Container(
+      //   height: 50,
+      //   width: 50,
+      //   decoration:
+      //       const BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
+      //   child: const Center(
+      //     child: Text(
+      //       "T",
+      //       style: TextStyle(fontSize: 20),
+      //     ),
+      //   ),
+      // ),
       title: Container(
         decoration: BoxDecoration(
           color: Colors.white,
