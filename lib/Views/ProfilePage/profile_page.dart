@@ -1,75 +1,124 @@
 import 'package:AID/Controllers/ProfileController/profile_controller.dart';
 import 'package:AID/Globals/Contants/colors.dart';
-import 'package:AID/Globals/Contants/keys.dart';
 import 'package:AID/Globals/Utils/get_avatar_url_from_id.dart';
+import 'package:AID/Globals/Widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../Models/user_model.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
-    profileController.currentUser =
-        User.fromJson(GetStorage().read(userDataKey));
+    profileController.getCurrentUser();
     return Scaffold(
       backgroundColor: colorScaffoldColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: CircleAvatar(
-              radius: 75,
-              backgroundColor: Colors.transparent,
-              child: Center(
-                child: SvgPicture.network(
-                  getAvatarUrlFromId(profileController.currentUser!.avatarId!),
-                ),
+      body: Obx(
+        () => profileController.isUserDataLoading.value
+            ? Center(
+                child: LoadingIndicator(),
+              )
+            : ListView(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 75,
+                      backgroundColor: Colors.transparent,
+                      child: Center(
+                        child: SvgPicture.network(
+                          getAvatarUrlFromId(
+                              profileController.currentUser!.avatarId!),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    profileController.currentUser!.name ?? "",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Divider(color: Colors.white),
+                  GestureDetector(
+                    onTap: (() => profileController.onMyMoneyButtonPressed()),
+                    child: profileDataRow('Mevcut Bakiye',
+                        '${profileController.currentUser!.balance ?? ""} ₺'),
+                  ),
+                  const Divider(color: Colors.white),
+                  profileDataRow('Toplam kazanç',
+                      '${profileController.currentUser!.totalGain ?? ""} ₺'),
+                  const Divider(color: Colors.white),
+                  profileDataRow('Etiketlenen video süresi',
+                      "${profileController.currentUser!.totalVideoEditetTime ?? ""} s"),
+                  const Divider(color: Colors.white),
+                  exitButton,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      withdrawButton,
+                      withdrawRequestButton,
+                    ],
+                  )
+                ],
               ),
-            ),
-          ),
-          Text(
-            profileController.currentUser!.name ?? "",
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const Divider(color: Colors.white),
-          GestureDetector(
-            onTap: (() => profileController.onMyMoneyButtonPressed()),
-            child: profileDataRow('Mevcut Bakiye', '${profileController.currentUser!.balance ?? ""} ₺'),
-          ),
-          const Divider(color: Colors.white),
-          profileDataRow('Toplam kazanç', '${profileController.currentUser!.totalGain ?? ""} ₺'),
-          const Divider(color: Colors.white),
-          profileDataRow('Etiketlenen video uzunluğu', "${profileController.currentUser!.totalVideoEditetTime ?? ""}s"),
-          const Divider(color: Colors.white),
-          exitButton
-        ],
       ),
     );
   }
 
   Widget get exitButton {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: Get.width / 4),
+      child: ElevatedButton(
+        onPressed: () {
+          profileController.onExitButtonPressed();
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.red),
+        ),
+        child: const Text(
+          'Çıkış',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget get withdrawButton {
     return ElevatedButton(
       onPressed: () {
-        profileController.onExitButtonPressed();
+        profileController.onMyMoneyButtonPressed();
       },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.red),
+        backgroundColor: MaterialStateProperty.all(colorSuccess),
       ),
       child: const Text(
-        'Çıkış',
+        'Çekim Yap',
         style: TextStyle(
           fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  Widget get withdrawRequestButton {
+    return ElevatedButton(
+      onPressed: () {
+        profileController.onSeeWithdrawRequestButtonPressed();
+      },
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(colorInfo),
+      ),
+      child: const Text(
+        'Çekim İsteklerimi Gör',
+        style: TextStyle(
+          fontSize: 12,
         ),
       ),
     );

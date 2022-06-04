@@ -15,6 +15,12 @@ class MainController extends GetxController {
     AdvertsPage(),
     ProfilePage(),
   ];
+
+  List<String> bodyPageTitles = [
+    "Ana Sayfa",
+    "İlanlar",
+    "Profil"
+  ];
   Widget firstRoute() {
     if (GetStorage().read(userDataKey) == null) {
       return LoginPage();
@@ -26,4 +32,7 @@ class MainController extends GetxController {
   void changePage(int index) {
     bodyIndex.value = index;
   }
+
+  
+
 }

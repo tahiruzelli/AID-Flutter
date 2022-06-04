@@ -1,3 +1,4 @@
+import 'package:AID/Controllers/ProfileController/profile_controller.dart';
 import 'package:AID/Controllers/main_controller.dart';
 import 'package:AID/Globals/Contants/colors.dart';
 import 'package:AID/Views/LiveSupportPage/live_support_page.dart';
@@ -5,6 +6,9 @@ import 'package:AID/Views/MainPage/Widgets/bottom_app_bar.dart';
 import 'package:AID/Views/MainPage/Widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import '../../Globals/Contants/keys.dart';
+import '../../Models/user_model.dart';
 import 'Widgets/my_center_button.dart';
 
 class MainPage extends StatelessWidget {
@@ -17,6 +21,7 @@ class MainPage extends StatelessWidget {
         appBar: myAppBar(
           action:
               mainController.bodyIndex.value == 2 ? chatBubble : Container(),
+          title: mainController.bodyPageTitles[mainController.bodyIndex.value],
         ),
         body: mainController.bodyPages[mainController.bodyIndex.value],
         floatingActionButton: MyCenterButton(),
@@ -29,7 +34,8 @@ class MainPage extends StatelessWidget {
   Widget get chatBubble {
     return IconButton(
       onPressed: () {
-        Get.to(MessageDetailPage());
+        User currentUser = GetStorage().read(userDataKey);
+        Get.to(MessageDetailPage((currentUser.id ?? 0).toString()));
       },
       icon: const Icon(
         Icons.chat,

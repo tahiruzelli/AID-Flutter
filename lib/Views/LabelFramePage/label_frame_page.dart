@@ -22,7 +22,10 @@ class _LabelVideoPage extends State<LabelVideoPage> {
                 child: Image.file(
                     videoController.images[videoController.inVideoIndex.value]),
                 stickerList: [
-                  Image.asset('assets/images/square.png'),
+                  Image.asset(
+                    'assets/images/square.png',
+                    color: Colors.white,
+                  ),
                 ],
                 videoController: videoController,
               )

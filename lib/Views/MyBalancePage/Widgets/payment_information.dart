@@ -65,7 +65,7 @@ class PaymentInformation extends StatelessWidget {
                 themeColor: Colors.blue,
                 textColor: Colors.white,
                 cardNumberDecoration: InputDecoration(
-                  labelText: 'Number',
+                  labelText: 'Kart Numarası',
                   hintText: 'XXXX XXXX XXXX XXXX',
                   hintStyle: const TextStyle(color: Colors.white),
                   labelStyle: const TextStyle(color: Colors.white),
@@ -77,7 +77,7 @@ class PaymentInformation extends StatelessWidget {
                   labelStyle: const TextStyle(color: Colors.white),
                   focusedBorder: border,
                   enabledBorder: border,
-                  labelText: 'Expired Date',
+                  labelText: 'Son Kullanma Tarihi',
                   hintText: 'XX/XX',
                 ),
                 cvvCodeDecoration: InputDecoration(
@@ -93,7 +93,7 @@ class PaymentInformation extends StatelessWidget {
                   labelStyle: const TextStyle(color: Colors.white),
                   focusedBorder: border,
                   enabledBorder: border,
-                  labelText: 'Card Holder',
+                  labelText: 'Kart Sahibi',
                 ),
                 onCreditCardModelChange: onCreditCardModelChange,
               ),

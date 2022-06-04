@@ -1,4 +1,6 @@
+import 'package:AID/Controllers/ProfileController/profile_controller.dart';
 import 'package:AID/Globals/Widgets/custom_snackbar.dart';
+import 'package:AID/Models/withdraw_request.dart';
 import 'package:AID/Repositories/BalanceRepository/balance_repository.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
@@ -23,6 +25,9 @@ class BalanceController extends GetxController {
   RxBool useGlassMorphism = false.obs;
   bool useBackgroundImage = false;
 
+  RxBool isWithdrawRequestLoading = false.obs;
+  List<WithdrawRequest> withdrawRequests = [];
+
   void addWithDrawMoney(double count) {
     if ((withDrawMoney.value + count) > myMoney.value) {
       warningSnackBar("Eklemeye çalıştığınız para, paranızı aşmaktadır.");
@@ -40,7 +45,7 @@ class BalanceController extends GetxController {
   }
 
   void onCreateButtonRequestButtonPressed() {
-    currentUser = User.fromJson(GetStorage().read(userDataKey));
+    currentUser = GetStorage().read(userDataKey);
     if (currentUser == null) {
       errorSnackBar(
           "Kullanıcı bilgilerinde hata var, uygulamayı yeniden başlatın!");
@@ -50,7 +55,7 @@ class BalanceController extends GetxController {
       errorSnackBar("Çekmek istediğiniz tutar bakiyenizden fazla olamaz!");
     } else if (cardNumber.value.length != 19) {
       warningSnackBar("Kart numaranız 16 karakterli olabilir");
-    } else if (cvvCode.value.length != 3) {
+    } else if (cvvCode.value.length != 4) {
       warningSnackBar("CVV kodunuz 3 karakterden oluşmalıdır!");
     } else if (!GetUtils.isNum(cvvCode.value)) {
       warningSnackBar("CVV kodunuz sadece sayılardan oluşabilir");
@@ -76,9 +81,29 @@ class BalanceController extends GetxController {
         Get.back();
         infoSnackBar(
             "Başarı ile çekim isteğiniz oluşturulmuştur. En kısa zamanda ödemeniz gerçekleştirilecektir.");
+        ProfileController profileController = Get.find();
+        profileController.getCurrentUser();
       } else {
         errorSnackBar(value['error']);
       }
     });
+  }
+
+  Future getMyRequests() async {
+    if (currentUser == null) {
+      errorSnackBar("Bir hata ile karşılaştık, çıkış yapıp tekrar giriniz");
+    } else {
+      isWithdrawRequestLoading.value = true;
+      balanceRepository.getMyRequests(currentUser!.id ?? 0).then((value) {
+        if (value['success']) {
+          withdrawRequests = (value['data'] as List)
+              .map((e) => WithdrawRequest.fromJson(e))
+              .toList();
+        } else {
+          errorSnackBar(value['error']);
+        }
+        isWithdrawRequestLoading.value = false;
+      });
+    }
   }
 }

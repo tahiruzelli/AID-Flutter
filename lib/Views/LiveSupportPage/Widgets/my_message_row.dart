@@ -7,21 +7,8 @@ class MyMessageRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
-      // trailing: Container(
-      //   height: 50,
-      //   width: 50,
-      //   decoration:
-      //       const BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
-      //   child: const Center(
-      //     child: Text(
-      //       "t",
-      //       style: TextStyle(fontSize: 20),
-      //     ),
-      //   ),
-      // ),
       title: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           boxShadow: const [
             BoxShadow(
@@ -37,7 +24,7 @@ class MyMessageRow extends StatelessWidget {
           child: Text(
             messageDetail['message'].toString(),
             style: const TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 14,
             ),
             textAlign: TextAlign.end,

@@ -4,9 +4,9 @@ class User {
   String? email;
   String? password;
   int? avatarId;
-  int? balance;
-  int? totalGain;
-  int? totalVideoEditetTime;
+  double? balance;
+  double? totalGain;
+  double? totalVideoEditetTime;
   String? createDate;
 
   User(
@@ -26,9 +26,9 @@ class User {
     email = json['email'];
     password = json['password'];
     avatarId = json['avatarId'];
-    balance = json['balance'];
-    totalGain = json['totalGain'];
-    totalVideoEditetTime = json['totalVideoEditetTime'];
+    balance = double.parse(json['balance'].toString());
+    totalGain = double.parse(json['totalGain'].toString());
+    totalVideoEditetTime = double.parse(json['totalVideoEditetTime'].toString());
     createDate = json['createDate'];
   }
 

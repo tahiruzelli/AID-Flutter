@@ -33,7 +33,10 @@ class VideoRepository implements IVideoRepository {
       "photoUrl": photoUrl,
       "tagId": tagId,
       "userId": userId,
-      "createTime": "2022-05-09T10:13:07.603Z"
+      "createTime": DateTime.now().toString().split(" ")[0] +
+          "T" +
+          DateTime.now().toString().split(" ")[1] +
+          "Z",
     };
     var jsonBody = const JsonEncoder().convert(body);
     var response = await RestConnector(

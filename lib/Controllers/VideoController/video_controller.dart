@@ -76,7 +76,7 @@ class VideoController extends GetxController {
   }
 
   Future postDataSet(File file, int tagId) async {
-    User currentUser = User.fromJson(GetStorage().read(userDataKey));
+    User currentUser = GetStorage().read(userDataKey);
     if (inVideoIndex.value != images.length - 1) {
       shredLoading.value = true;
       await Future.delayed(const Duration(milliseconds: 250));

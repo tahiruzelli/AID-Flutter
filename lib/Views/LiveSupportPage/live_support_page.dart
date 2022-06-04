@@ -6,6 +6,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 
 class MessageDetailPage extends StatefulWidget {
+  late String userId;
+  MessageDetailPage(this.userId);
+
   @override
   _MessagePageState createState() => _MessagePageState();
 }
@@ -15,15 +18,7 @@ class _MessagePageState extends State<MessageDetailPage> {
   late DatabaseReference ref = FirebaseDatabase.instance.ref();
   List messageList = [];
   List list = [];
-  bool isUploadedWritingStatus = false;
   String roomID = "fakeID";
-  String userID = "1";
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    messagesRef.child('writingStatus').child(roomID).update({userID: false});
-  }
 
   @override
   void initState() {
@@ -31,6 +26,7 @@ class _MessagePageState extends State<MessageDetailPage> {
   }
 
   TextEditingController textEditingController = TextEditingController();
+
   void _toggleSendChannelMessage(String text) async {
     String text = textEditingController.text;
     if (text.isEmpty) {
@@ -42,10 +38,8 @@ class _MessagePageState extends State<MessageDetailPage> {
         'message': textEditingController.text,
         'sender_date': now.toString().split('.')[0],
         'sender_nickname': "fake name",
-        'sender_id': userID,
-        'ilan_baslik': '',
+        'sender_id': widget.userId,
       });
-      messagesRef.child('writingStatus').child(roomID).update({userID: false});
       textEditingController.clear();
     } catch (errorCode) {
       print(errorCode);
@@ -73,9 +67,9 @@ class _MessagePageState extends State<MessageDetailPage> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: messageList[index]['sender_id'] == userID
+                  child: messageList[index]['sender_id'] == widget.userId
                       ? MyMessageRow(messageList[index])
-                      : ReceiverMessageRow(messageList[index]), 
+                      : ReceiverMessageRow(messageList[index]),
                 ),
               );
             },
@@ -101,50 +95,8 @@ class _MessagePageState extends State<MessageDetailPage> {
             ),
           )
         ],
-        // title: StreamBuilder(
-        //   stream: messagesRef.child('writingStatus').child(roomID).onValue,
-        //   builder: (context, AsyncSnapshot snapshot) {
-        //     if (snapshot.hasData) {
-        //       var status = snapshot.requireData.snapshot;
-        //       if (status.value == null) {
-        //         messagesRef.child('writingStatus').child(roomID).update({
-        //           userID: false,
-        //           userID: false, // receiver id
-        //         });
-        //       }
-        //       return Column(
-        //         mainAxisAlignment: MainAxisAlignment.start,
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           const Text(
-        //             '', //title
-        //             style: TextStyle(
-        //               fontSize: 15,
-        //               fontWeight: FontWeight.bold,
-        //             ),
-        //           ),
-        //           Text(
-        //             status.value[userID] == true // receiver id
-        //                 ? 'Yazıyor...'
-        //                 : '',
-        //             style: const TextStyle(
-        //                 fontSize: 12, fontWeight: FontWeight.w100),
-        //           ),
-        //         ],
-        //       );
-        //     } else {
-        //       return const Text(
-        //         "", // title
-        //         style: TextStyle(
-        //           fontSize: 15,
-        //           fontWeight: FontWeight.bold,
-        //         ),
-        //       );
-        //     }
-        //   },
-        // ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: colorScaffoldColor,
       body: _body(),
     );
   }
@@ -191,12 +143,12 @@ class _MessagePageState extends State<MessageDetailPage> {
     );
   }
 
-  _textFieldBox() {
+  Widget _textFieldBox() {
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, right: 12, bottom: 20),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0XFFF6F6F6),
+          color: colorPurple,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -206,33 +158,17 @@ class _MessagePageState extends State<MessageDetailPage> {
               child: TextField(
                 controller: textEditingController,
                 cursorHeight: 14,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    isUploadedWritingStatus = false;
-                    messagesRef
-                        .child('writingStatus')
-                        .child(roomID)
-                        .update({userID: false});
-                  } else if (!isUploadedWritingStatus) {
-                    isUploadedWritingStatus = true;
-                    messagesRef
-                        .child('writingStatus')
-                        .child(roomID)
-                        .update({userID: true});
-                  }
-                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide:
-                          const BorderSide(color: Color(0XFFE4E4E5), width: 1)),
+                    borderRadius: BorderRadius.circular(32),
+                  ),
                   isDense: true,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 4.0, horizontal: 8.0),
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide:
-                          const BorderSide(color: Color(0XFFE4E4E5), width: 1)),
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide(color: colorPurple, width: 1),
+                  ),
                 ),
               ),
             ),
@@ -242,7 +178,7 @@ class _MessagePageState extends State<MessageDetailPage> {
               },
               icon: const Icon(
                 Icons.send,
-                color: Color(0XFF057CFE),
+                color: Colors.white,
               ),
             ),
           ],

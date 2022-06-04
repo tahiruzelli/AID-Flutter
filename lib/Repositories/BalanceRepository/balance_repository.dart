@@ -12,7 +12,7 @@ abstract class IBalanceRepository {
     required String cardHolder,
     required int userId,
   });
-  Future getMyRequests();
+  Future getMyRequests(int id);
 }
 
 class BalanceRepository implements IBalanceRepository {
@@ -44,8 +44,11 @@ class BalanceRepository implements IBalanceRepository {
   }
 
   @override
-  Future getMyRequests() {
-    // TODO: implement getMyRequests
-    throw UnimplementedError();
+  Future getMyRequests(int id) async {
+    var response = await RestConnector(
+      baseUrl + getMyWithdrawRequestsUrl + id.toString(),
+      requestType: "GET",
+    ).getData();
+    return response;
   }
 }

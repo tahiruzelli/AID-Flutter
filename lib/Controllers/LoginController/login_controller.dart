@@ -1,6 +1,7 @@
 import 'package:AID/Globals/Contants/keys.dart';
 import 'package:AID/Globals/Utils/generate_md5.dart';
 import 'package:AID/Globals/Widgets/custom_snackbar.dart';
+import 'package:AID/Models/user_model.dart';
 import 'package:AID/Repositories/LoginRepository/login_repository.dart';
 import 'package:AID/Views/MainPage/main_page.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class LoginController extends GetxController {
     )
         .then((value) {
       if (value['success']) {
-        GetStorage().write(userDataKey, value['data']);
+        GetStorage().write(userDataKey, User.fromJson(value['data']));
         Get.offAll(MainPage());
         successSnackBar("Başarı ile giriş yaptınız!");
       } else {

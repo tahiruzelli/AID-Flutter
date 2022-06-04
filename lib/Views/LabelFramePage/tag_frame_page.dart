@@ -15,6 +15,7 @@ class TagFramePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar(),
+      backgroundColor: colorScaffoldColor,
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: colorPurple,
         onPressed: () {

@@ -53,14 +53,15 @@ class AdvertCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${advert.totalGain} \$',
+                      'Total Kazanç: ${advert.totalGain} \$',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                       ),
                     ),
                     Text(
-                      secondToTime(advert.videoLength ?? 0),
+                      "Video Uzunluğu: " +
+                          secondToTime(advert.videoLength ?? 0),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,

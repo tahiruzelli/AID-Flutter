@@ -10,7 +10,7 @@ class AnnouncementDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: myAppBar(title: "İlan Detayı"),
       backgroundColor: colorScaffoldColor,
       body: Column(
         children: [

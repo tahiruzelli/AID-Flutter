@@ -1,3 +1,4 @@
+import 'package:AID/Globals/Contants/colors.dart';
 import 'package:AID/Views/MainPage/Widgets/my_app_bar.dart';
 import 'package:AID/Views/MainPage/main_page.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,15 @@ class SuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar(),
+      backgroundColor: colorScaffoldColor,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: colorPurple,
+        onPressed: () {
+          Get.offAll(MainPage());
+        },
+        label: const Text("Ana Sayfaya Dön"),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Center(
         child: InkWell(
           onTap: () {

@@ -14,19 +14,13 @@ class MyBalancePage extends StatelessWidget {
     return Scaffold(
       appBar: myAppBar(),
       backgroundColor: colorScaffoldColor,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: Get.height,
-          width: Get.width,
-          child: Column(
-            children: [
-              BalanceView(),
-              Expanded(
-                child: PaymentInformation(),
-              ),
-            ],
+      body: ListView(
+        children: [
+          BalanceView(),
+          Expanded(
+            child: PaymentInformation(),
           ),
-        ),
+        ],
       ),
     );
   }
