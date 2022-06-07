@@ -18,12 +18,19 @@ class AdvertsPage extends StatelessWidget {
             ? Center(
                 child: LoadingIndicator(),
               )
-            : ListView.builder(
-                itemCount: advertController.adverts.length,
-                itemBuilder: (context, index) {
-                  return AdvertCard(advertController.adverts[index]);
-                },
-              ),
+            : advertController.adverts.isEmpty
+                ? const Center(
+                    child: Text(
+                      "İlan bulunmamaktadır",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: advertController.adverts.length,
+                    itemBuilder: (context, index) {
+                      return AdvertCard(advertController.adverts[index]);
+                    },
+                  ),
       ),
     );
   }

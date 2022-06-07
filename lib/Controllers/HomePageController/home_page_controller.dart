@@ -23,6 +23,9 @@ class HomePageController extends GetxController {
 
   Future getAnnouncements() async {
     announcementsLoading.value = true;
+    announcements.clear();
+    leftSideList.clear();
+    rightSideList.clear();
     announcementRepository.getAnnouncements().then((value) {
       if (value['success']) {
         announcements = (value['data'] as List)

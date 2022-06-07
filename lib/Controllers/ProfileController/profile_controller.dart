@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:AID/Controllers/BalanceController/balance_controller.dart';
 import 'package:AID/Globals/Contants/keys.dart';
 import 'package:AID/Globals/Widgets/custom_snackbar.dart';
@@ -36,18 +38,25 @@ class ProfileController extends GetxController {
   }
 
   Future getCurrentUser() async {
-    isUserDataLoading.value = true;
-    currentUser = GetStorage().read(userDataKey);
-    profileRepository.getCurrentUser(currentUser?.id ?? 0).then((value) {
-      if (value['success']) {
-        currentUser = User.fromJson(value['data']);
-        GetStorage().write(userDataKey, currentUser);
-      } else {
-        errorSnackBar(value['error']);
-      }
-
-      isUserDataLoading.value = false;
-    });
+    print("test 0");
+    var tmpUser = GetStorage().read(userDataKey);
+    if (tmpUser is User) {
+      isUserDataLoading.value = true;
+      currentUser = tmpUser;
+      print("test 1");
+      profileRepository.getCurrentUser(currentUser?.id ?? 0).then((value) {
+        if (value['success']) {
+          currentUser = User.fromJson(value['data']);
+          print("test 2");
+          GetStorage().write(userDataKey, currentUser);
+        } else {
+          errorSnackBar(value['error']);
+        }
+        isUserDataLoading.value = false;
+      });
+    } else {
+      onExitButtonPressed();
+    }
   }
 
   @override

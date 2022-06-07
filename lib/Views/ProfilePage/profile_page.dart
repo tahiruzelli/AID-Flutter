@@ -7,6 +7,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Globals/Utils/format_double.dart';
+
 class ProfilePage extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
   @override
@@ -29,13 +31,13 @@ class ProfilePage extends StatelessWidget {
                       child: Center(
                         child: SvgPicture.network(
                           getAvatarUrlFromId(
-                              profileController.currentUser!.avatarId!),
+                              profileController.currentUser?.avatarId ?? 0),
                         ),
                       ),
                     ),
                   ),
                   Text(
-                    profileController.currentUser!.name ?? "",
+                    profileController.currentUser?.name ?? "",
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -47,14 +49,14 @@ class ProfilePage extends StatelessWidget {
                   GestureDetector(
                     onTap: (() => profileController.onMyMoneyButtonPressed()),
                     child: profileDataRow('Mevcut Bakiye',
-                        '${profileController.currentUser!.balance ?? ""} ₺'),
+                        '${formatDouble(profileController.currentUser?.balance.toString() ?? "")} ₺'),
                   ),
                   const Divider(color: Colors.white),
                   profileDataRow('Toplam kazanç',
-                      '${profileController.currentUser!.totalGain ?? ""} ₺'),
+                      '${formatDouble(profileController.currentUser?.totalGain.toString() ?? "")} ₺'),
                   const Divider(color: Colors.white),
                   profileDataRow('Etiketlenen video süresi',
-                      "${profileController.currentUser!.totalVideoEditetTime ?? ""} s"),
+                      "${formatDouble(profileController.currentUser?.totalVideoEditetTime.toString() ?? "")} s"),
                   const Divider(color: Colors.white),
                   exitButton,
                   Row(

@@ -18,12 +18,20 @@ class MyWithdrawRequest extends StatelessWidget {
             ? Center(
                 child: LoadingIndicator(),
               )
-            : ListView.builder(
-                itemCount: balanceController.withdrawRequests.length,
-                itemBuilder: (context, index) {
-                  return WithdrawRequestCard(balanceController.withdrawRequests[index]);
-                },
-              ),
+            : balanceController.withdrawRequests.isEmpty
+                ? const Center(
+                    child: Text(
+                      "Çekim isteğiniz bulunmamaktadır",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: balanceController.withdrawRequests.length,
+                    itemBuilder: (context, index) {
+                      return WithdrawRequestCard(
+                          balanceController.withdrawRequests[index]);
+                    },
+                  ),
       ),
     );
   }

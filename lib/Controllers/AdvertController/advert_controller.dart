@@ -28,8 +28,6 @@ class AdvertController extends GetxController {
   }
 
   void onCardPressed(Advert advert) async {
-    // File file = await toFile(
-    //     "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4");
     File file = await urlToFile(advert.videoUrl!);
     Get.to(LabelVideoPage());
     VideoController videoController = Get.put(VideoController());

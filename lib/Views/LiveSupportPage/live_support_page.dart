@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 
 class MessageDetailPage extends StatefulWidget {
   late String userId;
-  MessageDetailPage(this.userId);
+  late String roomId;
+  MessageDetailPage(this.userId, this.roomId);
 
   @override
   _MessagePageState createState() => _MessagePageState();
@@ -18,7 +19,6 @@ class _MessagePageState extends State<MessageDetailPage> {
   late DatabaseReference ref = FirebaseDatabase.instance.ref();
   List messageList = [];
   List list = [];
-  String roomID = "fakeID";
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _MessagePageState extends State<MessageDetailPage> {
     }
     try {
       DateTime now = DateTime.now();
-      messagesRef.child(roomID).push().set({
+      messagesRef.child(widget.roomId).push().set({
         'message': textEditingController.text,
         'sender_date': now.toString().split('.')[0],
         'sender_nickname': "fake name",
@@ -111,7 +111,7 @@ class _MessagePageState extends State<MessageDetailPage> {
             Expanded(
               child: SizedBox(
                 child: StreamBuilder(
-                  stream: ref.child(roomID).onValue,
+                  stream: ref.child(widget.roomId).onValue,
                   builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
                     if (snapshot.hasData) {
                       list.clear();
@@ -158,6 +158,7 @@ class _MessagePageState extends State<MessageDetailPage> {
               child: TextField(
                 controller: textEditingController,
                 cursorHeight: 14,
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(32),

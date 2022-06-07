@@ -1,8 +1,8 @@
 class Advert {
   int? id;
   String? videoUrl;
-  int? videoLength;
-  int? totalGain;
+  double? videoLength;
+  double? totalGain;
   String? coverImageUrl;
   String? createTime;
   bool? isActive;
@@ -19,8 +19,8 @@ class Advert {
   Advert.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     videoUrl = json['videoUrl'];
-    videoLength = json['videoLength'];
-    totalGain = json['totalGain'];
+    videoLength = double.parse(json['videoLength'].toString());
+    totalGain = double.parse(json['totalGain'].toString());
     coverImageUrl = json['coverImageUrl'];
     createTime = json['createTime'];
     isActive = json['isActive'];

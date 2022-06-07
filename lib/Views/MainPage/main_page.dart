@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:AID/Controllers/ProfileController/profile_controller.dart';
 import 'package:AID/Controllers/main_controller.dart';
 import 'package:AID/Globals/Contants/colors.dart';
+import 'package:AID/Globals/Utils/generate_md5.dart';
 import 'package:AID/Views/LiveSupportPage/live_support_page.dart';
 import 'package:AID/Views/MainPage/Widgets/bottom_app_bar.dart';
 import 'package:AID/Views/MainPage/Widgets/my_app_bar.dart';
@@ -35,7 +38,8 @@ class MainPage extends StatelessWidget {
     return IconButton(
       onPressed: () {
         User currentUser = GetStorage().read(userDataKey);
-        Get.to(MessageDetailPage((currentUser.id ?? 0).toString()));
+        String roomId = generateMd5(Random().nextInt(100000).toString());
+        Get.to(MessageDetailPage((currentUser.id ?? 0).toString(), roomId));
       },
       icon: const Icon(
         Icons.chat,

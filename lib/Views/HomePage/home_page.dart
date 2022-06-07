@@ -11,9 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     homePageController.getAnnouncements();
-    homePageController.announcements.clear();
-    homePageController.leftSideList.clear();
-    homePageController.rightSideList.clear();
+
     return Scaffold(
       backgroundColor: colorScaffoldColor,
       body: Obx(

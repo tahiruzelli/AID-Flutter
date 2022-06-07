@@ -17,9 +17,7 @@ class MyBalancePage extends StatelessWidget {
       body: ListView(
         children: [
           BalanceView(),
-          Expanded(
-            child: PaymentInformation(),
-          ),
+          PaymentInformation(),
         ],
       ),
     );

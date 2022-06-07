@@ -37,7 +37,8 @@ class LoginController extends GetxController {
     )
         .then((value) {
       if (value['success']) {
-        GetStorage().write(userDataKey, User.fromJson(value['data']));
+        User user = User.fromJson(value['data']);
+        GetStorage().write(userDataKey, user);
         Get.offAll(MainPage());
         successSnackBar("Başarı ile giriş yaptınız!");
       } else {

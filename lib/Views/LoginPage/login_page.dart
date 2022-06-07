@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginPage> {
                 Icons.email,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Email',
+              hintText: 'Email giriniz',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginPage> {
                 Icons.lock,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Password',
+              hintText: 'Şifre giriniz',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'Kayıt Ol',
+              text: ' Kayıt Ol',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

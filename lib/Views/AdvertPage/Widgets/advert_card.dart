@@ -60,8 +60,7 @@ class AdvertCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Video Uzunluğu: " +
-                          secondToTime(advert.videoLength ?? 0),
+                      "Video Uzunluğu: " + advert.videoLength.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
